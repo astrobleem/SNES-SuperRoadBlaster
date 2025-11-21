@@ -15,9 +15,9 @@ the game instead.
 Requirements to build game ROM:
 -os: linux 
 -tools:
-  -WLA DX 9.5a
+  -WLA DX 9.5a available in the folder wla-dx-9.5-svn
   -python 2.7.2 (not tested with python 3+! Will probably need adjustments.)
-  -snesbrr by DMV27
+  -snesbrr by DMV27 available in the tools folder snesbrr-2006-12-13.
 
 
 Compilation instructions:
