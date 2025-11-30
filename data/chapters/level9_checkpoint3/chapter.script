@@ -1,0 +1,37 @@
+/**
+* this file has been auto-generated.
+*/
+
+	CHAPTER level9_checkpoint3
+
+	EVENT Event.chapter.CLS.PTR $0000 $01b8 EventResult.playchapter level9_checkpoint4 110 1 
+
+	EVENT Event.checkpoint.CLS.PTR $0000 $0000 EventResult.none none   
+
+	EVENT Event.direction_left.CLS.PTR $0018 $002f EventResult.playchapter level9_crash3   
+
+	EVENT Event.direction_right.CLS.PTR $0037 $004f EventResult.playchapter level9_crash4   
+
+	EVENT Event.direction_right.CLS.PTR $0098 $00b0 EventResult.playchapter level9_crash2   
+
+	EVENT Event.macro_vibrate1.CLS.PTR $00be $0000 EventResult.none none   
+
+	EVENT Event.accelerate.CLS.PTR $00e4 $00fd EventResult.playchapter level9_crash1   
+
+	EVENT Event.target.CLS.PTR $00e4 $00fd EventResult.playchapter level9_crash1   
+
+	EVENT Event.macro_vibrate1.CLS.PTR $00fa $0000 EventResult.none none   
+
+	EVENT Event.debris_crash.CLS.PTR $0110 $0000 EventResult.none none   
+
+	EVENT Event.brake.CLS.PTR $012d $0149 EventResult.playchapter level9_crash3   
+
+	EVENT Event.direction_right.CLS.PTR $0144 $015f EventResult.playchapter level9_crash1   
+
+	EVENT Event.macro_vibrate1.CLS.PTR $0166 $0000 EventResult.none none   
+
+	EVENT Event.direction_right.CLS.PTR $017b $0192 EventResult.playchapter level9_crash3   
+
+	EVENT Event.direction_left.CLS.PTR $0198 $01b6 EventResult.playchapter level9_crash1   
+
+	DIE

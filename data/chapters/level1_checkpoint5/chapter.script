@@ -1,0 +1,75 @@
+/**
+* this file has been auto-generated.
+*/
+
+	CHAPTER level1_checkpoint5
+
+	EVENT Event.chapter.CLS.PTR $0000 $04d8 EventResult.playchapter level_complete1 8 1 
+
+	EVENT Event.checkpoint.CLS.PTR $0000 $0000 EventResult.none none   
+
+	EVENT Event.direction_left.CLS.PTR $004e $0065 EventResult.playchapter level1_crash1   
+
+	EVENT Event.direction_right.CLS.PTR $00af $00c5 EventResult.playchapter level1_crash1   
+
+	EVENT Event.hide_dash.CLS.PTR $00d8 $0115 EventResult.none none   
+
+	EVENT Event.landing_crash.CLS.PTR $0134 $0000 EventResult.none none   
+
+	EVENT Event.direction_right.CLS.PTR $016a $0180 EventResult.playchapter level1_crash13   
+
+	EVENT Event.explode_crash.CLS.PTR $017a $0000 EventResult.none none   
+
+	EVENT Event.macro_vibrate1.CLS.PTR $018c $0000 EventResult.none none   
+
+	EVENT Event.macro_vibrate1.CLS.PTR $01ae $0000 EventResult.none none   
+
+	EVENT Event.direction_left.CLS.PTR $01d6 $01e8 EventResult.playchapter level1_crash1   
+
+	EVENT Event.explode_crash.CLS.PTR $01e8 $0000 EventResult.none none   
+
+	EVENT Event.direction_right.CLS.PTR $01fe $0209 EventResult.playchapter level1_crash10   
+
+	EVENT Event.explode_crash.CLS.PTR $020b $0000 EventResult.none none   
+
+	EVENT Event.macro_vibrate1.CLS.PTR $0240 $0000 EventResult.none none   
+
+	EVENT Event.accelerate.CLS.PTR $025b $0270 EventResult.playchapter level1_crash11   
+
+	EVENT Event.direction_left.CLS.PTR $025b $0270 EventResult.playchapter level1_crash11   
+
+	EVENT Event.hide_dash.CLS.PTR $0279 $0297 EventResult.none none   
+
+	EVENT Event.landing_crash.CLS.PTR $02ae $0000 EventResult.none none   
+
+	EVENT Event.macro_vibrate1.CLS.PTR $030f $0000 EventResult.none none   
+
+	EVENT Event.accelerate.CLS.PTR $0334 $034d EventResult.playchapter level1_crash1   
+
+	EVENT Event.target.CLS.PTR $0334 $034d EventResult.playchapter level1_crash1   
+
+	EVENT Event.macro_vibrate1.CLS.PTR $0335 $0000 EventResult.none none   
+
+	EVENT Event.macro_vibrate1.CLS.PTR $034e $0000 EventResult.none none   
+
+	EVENT Event.macro_vibrate1.CLS.PTR $0362 $0000 EventResult.none none   
+
+	EVENT Event.macro_vibrate1.CLS.PTR $037a $0000 EventResult.none none   
+
+	EVENT Event.macro_vibrate1.CLS.PTR $03a2 $0000 EventResult.none none   
+
+	EVENT Event.accelerate.CLS.PTR $03ac $03ce EventResult.playchapter level1_crash1   
+
+	EVENT Event.target.CLS.PTR $03ac $03ce EventResult.playchapter level1_crash1   
+
+	EVENT Event.brake.CLS.PTR $03d5 $03ec EventResult.playchapter level1_crash1   
+
+	EVENT Event.direction_right.CLS.PTR $03d5 $03ec EventResult.playchapter level1_crash1   
+
+	EVENT Event.explode_crash.CLS.PTR $03eb $0000 EventResult.none none   
+
+	EVENT Event.hide_dash.CLS.PTR $040a $0545 EventResult.none none   
+
+	EVENT Event.slide_crash.CLS.PTR $0411 $0000 EventResult.none none   
+
+	DIE

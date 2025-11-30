@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import os
 import sys
@@ -8,10 +8,10 @@ import logging
 BRR_BLOCK_SAMPLES = 16
 BRR_BLOCK_LENGTH = 9
 
-BRR_ONE_SHOT_EXTEND = 25	#someone said non-looping samples are cut out 25 samples before their actual end. Adding these doesn't hurt, I guess...
-BRR_MAX_RANGE_SHIFT	= 13
+BRR_ONE_SHOT_EXTEND = 25    #someone said non-looping samples are cut out 25 samples before their actual end. Adding these doesn't hurt, I guess...
+BRR_MAX_RANGE_SHIFT    = 13
 BRR_FILTERS = 4
-SAMPLE_CUT_THRESHOLD = 256	#cut looping samples above this size instead of multipliying their size to make them divisible by 16
+SAMPLE_CUT_THRESHOLD = 256    #cut looping samples above this size instead of multipliying their size to make them divisible by 16
 
 MOD_CHANNELS = 4
 MOD_BYTES_PER_CHANNEL = 4
@@ -22,27 +22,34 @@ MOD_INSTRUMENT_DATA_LENGTH = 30
 MOD_INSTRUMENT_COUNT = 31
 
 #file offsets, converted modfile
-SPCMOD_INSTRUMENT_DATA	= 0
-SPCMOD_SONG_LENGTH		= 248
-SPCMOD_PATTERN_COUNT	= 249
-SPCMOD_SEQUENCE			= 250
-SPCMOD_PATTERN_POINTER	= 378
-SPCMOD_PATTERN_DATA		= 508
+SPCMOD_INSTRUMENT_DATA    = 0
+SPCMOD_SONG_LENGTH        = 248
+SPCMOD_PATTERN_COUNT    = 249
+SPCMOD_SEQUENCE            = 250
+SPCMOD_PATTERN_POINTER    = 378
+SPCMOD_PATTERN_DATA        = 508
 
-SPCMOD_EMPTY_CHANNEL	= 0xff
-SPCMOD_INVALID_PERIOD	= 0xff
+SPCMOD_EMPTY_CHANNEL    = 0xff
+SPCMOD_INVALID_PERIOD    = 0xff
 
 INSTR_RES_MULTI = 1
 
 globalSampleBuffer = {
-  'last'		: 0,
-  'beforeLast'	: 0
+  'last'        : 0,
+  'beforeLast'    : 0
 }
 
+def byte_value(value):
+  if isinstance(value, int):
+    return value
+  if isinstance(value, (bytes, bytearray)):
+    return value[0]
+  return ord(value)
+
 statistics = {
-  'samples'	: 0,
-  'filter'	: { 0:0,1:0,2:0,3:0 },
-  'range'	: { 0:0,1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0,10:0,11:0,12:0 },
+  'samples'    : 0,
+  'filter'    : { 0:0,1:0,2:0,3:0 },
+  'range'    : { 0:0,1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0,10:0,11:0,12:0 },
   'maxError': 0,
   'minError': BRR_BLOCK_SAMPLES * 0xffff
 }
@@ -55,12 +62,12 @@ logging.basicConfig( #filename='debug.log',
 
 
 def main():
-    if len( sys.argv ) != 3:
+    if len(sys.argv) != 3 or "-h" in sys.argv or "--help" in sys.argv:
       logging.info( 'Pro tracker MOD to SNES format converter' )
       logging.info( '2011-01-02 d4s matt@dforce3000.de' )
       logging.info( 'Usage:' )
       logging.info( '%s infile outfilebase' % sys.argv[0] )
-      sys.exit(1)
+      sys.exit(0 if "-h" in sys.argv or "--help" in sys.argv else 1)
       
 
     inFileName = sys.argv[1]
@@ -87,21 +94,21 @@ def main():
       sys.exit(1)
     
     moduleData = {}
-    moduleData['name']				= getModuleName( inFileData )
-    moduleData['length']			= getModuleLength( inFileData )
-    moduleData['sequence']			= getModulePlaySequence( inFileData )
-    moduleData['patternCount']		= getModulePatternCount( moduleData['sequence'] )
-    moduleData['sampleBufferPos']	= getModuleSampleBufferPosition( moduleData['patternCount'] )
-    moduleData['instruments']		= getModuleInstruments( inFileData, moduleData['sampleBufferPos'] )
-    moduleData['patterns']			= getModulePatterns( inFileData, moduleData['patternCount'] )
+    moduleData['name']                = getModuleName( inFileData )
+    moduleData['length']            = getModuleLength( inFileData )
+    moduleData['sequence']            = getModulePlaySequence( inFileData )
+    moduleData['patternCount']        = getModulePatternCount( moduleData['sequence'] )
+    moduleData['sampleBufferPos']    = getModuleSampleBufferPosition( moduleData['patternCount'] )
+    moduleData['instruments']        = getModuleInstruments( inFileData, moduleData['sampleBufferPos'] )
+    moduleData['patterns']            = getModulePatterns( inFileData, moduleData['patternCount'] )
     
     #debugLog( moduleData['instruments'] )
     convertedModule = {
-      'length'			: moduleData['length'],
-      'patternCount'	: moduleData['patternCount'],
-      'sequence'		: moduleData['sequence'],
-      'patterns'		: convertPatterns( moduleData['patterns'] ),
-      'instruments'		: convertInstruments( moduleData['instruments'] )
+      'length'            : moduleData['length'],
+      'patternCount'    : moduleData['patternCount'],
+      'sequence'        : moduleData['sequence'],
+      'patterns'        : convertPatterns( moduleData['patterns'] ),
+      'instruments'        : convertInstruments( moduleData['instruments'] )
     }
     
     writeOutputFile( outFile, convertedModule )
@@ -140,7 +147,7 @@ def outputStatistics( statistics ):
   logging.info( 'Converted %d BRR samples with error range %d-%d.\nFilter usage: 0:%d%% 1:%d%% 2:%d%% 3:%d%%\nRange usage: 0:%d%% 1:%d%% 2:%d%% 3:%d%% 4:%d%% 5:%d%% 6:%d%% 7:%d%% 8:%d%% 9:%d%% 10:%d%% 11:%d%% 12:%d%%' % outputTuple )
 
 def getModuleLength( mod ):
-  return ord( mod[950] )
+  return byte_value( mod[950] )
 
 
 def getModuleName( mod ):
@@ -148,7 +155,7 @@ def getModuleName( mod ):
 
 
 def isValidModule( mod ):
-  validModSignatures = [ 'M.K.', '4CHN']
+  validModSignatures = [ b'M.K.', b'4CHN']
   return mod[1080:1084] in validModSignatures
 
 def writeOutputFile( outFile, mod ):
@@ -164,41 +171,41 @@ def writeOutputFile( outFile, mod ):
 
 def writeChar( outFile, offset, data ):
   outFile.seek( offset )
-  outFile.write( chr( data ) )
+  outFile.write(bytes((data ,)))
 
 
 def writeSequence( outFile, sequence ):
   outFile.seek( SPCMOD_SEQUENCE )
   for pattern in sequence:
-    outFile.write( chr( pattern ) )
+    outFile.write(bytes((pattern ,)))
 
 
 def writePatterns( outFile, patterns ):
   patternPointer = []
   outFile.seek( SPCMOD_PATTERN_DATA )
   for pattern in patterns:
-    patternPointer.append( outFile.tell() - SPCMOD_PATTERN_DATA )	#relative pointer to pattern
+    patternPointer.append( outFile.tell() - SPCMOD_PATTERN_DATA )    #relative pointer to pattern
     for channel in pattern:
       if channel['valid']:
-        outFile.write( chr( channel['instrument'] ) )
-        outFile.write( chr( channel['period'] ) )
-        outFile.write( chr( channel['effectCommand'] ) )
-        outFile.write( chr( channel['effectData'] ) )
+        outFile.write(bytes((channel['instrument'] ,)))
+        outFile.write(bytes((channel['period'] ,)))
+        outFile.write(bytes((channel['effectCommand'] ,)))
+        outFile.write(bytes((channel['effectData'] ,)))
       else:
-        outFile.write( chr( SPCMOD_EMPTY_CHANNEL ) )
+        outFile.write(bytes((SPCMOD_EMPTY_CHANNEL ,)))
   
-  patternPointer.append( outFile.tell() - SPCMOD_PATTERN_DATA )	#relative pointer to end of last pattern. crude shit
+  patternPointer.append( outFile.tell() - SPCMOD_PATTERN_DATA )    #relative pointer to end of last pattern. crude shit
   return {
-    'patterns'	: patternPointer,
-    'end'		: outFile.tell()
+    'patterns'    : patternPointer,
+    'end'        : outFile.tell()
   }
 
 
 def writePatternPointers( outFile, patternPointers ):
   outFile.seek( SPCMOD_PATTERN_POINTER )
   for pointer in patternPointers:
-    outFile.write( chr( (pointer & 0xff00) >> 8 ) )
-    outFile.write( chr( (pointer & 0xff) ) )
+    outFile.write(bytes(((pointer & 0xff00) >> 8,)))
+    outFile.write(bytes(((pointer & 0xff,))) )
 
 def writeSamples( outFile, sampleBufferPos, instruments ):
   outFile.seek( sampleBufferPos )
@@ -206,8 +213,8 @@ def writeSamples( outFile, sampleBufferPos, instruments ):
   samplePointer = []
   for instrument in instruments:
     samplePointer.append( {
-      'start'		: outFile.tell(),
-      'repeatStart' : outFile.tell() + ( instrument['repeatStart'] / BRR_BLOCK_SAMPLES * BRR_BLOCK_LENGTH )
+      'start'        : outFile.tell(),
+      'repeatStart' : outFile.tell() + ( instrument['repeatStart'] // BRR_BLOCK_SAMPLES * BRR_BLOCK_LENGTH )
     } )
     
     for i in range( len( instrument['samples'] ) ):
@@ -216,9 +223,9 @@ def writeSamples( outFile, sampleBufferPos, instruments ):
       end = 1 if ( i == len( instrument['samples'] ) - 1 ) else 0
       header = ( sampleBlock['range'] << 4 ) | ( sampleBlock['filter'] << 2 ) | ( loop << 1 ) | end
       
-      outFile.write( chr( header ) )
+      outFile.write(bytes((header ,)))
       for i in range( 8 ):
-        outFile.write( chr( mergeBrrSample( i, sampleBlock['samples'] ) ) )
+        outFile.write(bytes((mergeBrrSample( i, sampleBlock['samples'] ,))) )
   return samplePointer
 
 
@@ -229,14 +236,14 @@ def mergeBrrSample( pos, samples ):
 def writeInstruments( outFile, samplePointers, instruments ):
   outFile.seek( SPCMOD_INSTRUMENT_DATA )
   for i in range(len(instruments)):
-    outFile.write( chr( (samplePointers[i]['start'] & 0xff00) >> 8 ) )
-    outFile.write( chr( (samplePointers[i]['start'] & 0xff) ) )
-    outFile.write( chr( instruments[i]['finetune'] ) )
-    outFile.write( chr( instruments[i]['volume'] ) )
-    outFile.write( chr( (samplePointers[i]['repeatStart'] & 0xff00) >> 8 ) )
-    outFile.write( chr( (samplePointers[i]['repeatStart'] & 0xff) ) )
-    outFile.write( chr( 0 ) )
-    outFile.write( chr( 0 ) )
+    outFile.write(bytes(((samplePointers[i]['start'] & 0xff00) >> 8,)))
+    outFile.write(bytes(((samplePointers[i]['start'] & 0xff,))) )
+    outFile.write(bytes((instruments[i]['finetune'] ,)))
+    outFile.write(bytes((instruments[i]['volume'] ,)))
+    outFile.write(bytes(((samplePointers[i]['repeatStart'] & 0xff00) >> 8,)))
+    outFile.write(bytes(((samplePointers[i]['repeatStart'] & 0xff,))) )
+    outFile.write(bytes((0 ,)))
+    outFile.write(bytes((0 ,)))
     debugLog( 'wrote instrument %x start: %x, repeat: %x, length in samples: %x' % tuple( [i+1, samplePointers[i]['start'], samplePointers[i]['repeatStart'], len( instruments[i]['samples'] ) * 16  ] ) )
     
 
@@ -252,20 +259,20 @@ def convertInstrument( inputInstrument ):
   paddedInstrument = padInstrumentSamples( multipliedInstrument )
   
   return {
-    'finetune'		: paddedInstrument['finetune'],
-    'volume'		: paddedInstrument['volume'],
-    'repeatStart'	: paddedInstrument['repeatStart'],
-    'repeatFlag'	: paddedInstrument['repeatFlag'],
-    'samples'		: convertInstrumentSamples( paddedInstrument['samples'], paddedInstrument['repeatStart'], paddedInstrument['repeatFlag'] )
+    'finetune'        : paddedInstrument['finetune'],
+    'volume'        : paddedInstrument['volume'],
+    'repeatStart'    : paddedInstrument['repeatStart'],
+    'repeatFlag'    : paddedInstrument['repeatFlag'],
+    'samples'        : convertInstrumentSamples( paddedInstrument['samples'], paddedInstrument['repeatStart'], paddedInstrument['repeatFlag'] )
   }
 
 def multiplyInstrumentResolution( inputInstrument, factor ):
   return {
-    'finetune'		: inputInstrument['finetune'],
-    'volume'		: inputInstrument['volume'],
-    'repeatStart'	: inputInstrument['repeatStart'] * factor,
-    'repeatLength'	: inputInstrument['repeatLength'] * factor,
-    'samples'		: multiplySampleResolution( inputInstrument['samples'], factor )
+    'finetune'        : inputInstrument['finetune'],
+    'volume'        : inputInstrument['volume'],
+    'repeatStart'    : inputInstrument['repeatStart'] * factor,
+    'repeatLength'    : inputInstrument['repeatLength'] * factor,
+    'samples'        : multiplySampleResolution( inputInstrument['samples'], factor )
   }
 
 
@@ -306,11 +313,11 @@ def padInstrumentSamples( inputInstrument ):
       postLoopSamples.extend( postLoopSamplesOrig )
   
   return {
-    'finetune'		: inputInstrument['finetune'],
-    'volume'		: inputInstrument['volume'],
-    'repeatStart'	: len( preLoopSamples ),
-    'repeatFlag'	: repeatFlag,
-    'samples'		: groupSamples( preLoopSamples + postLoopSamples ) if len( inputInstrument['samples'] ) > BRR_BLOCK_SAMPLES else []
+    'finetune'        : inputInstrument['finetune'],
+    'volume'        : inputInstrument['volume'],
+    'repeatStart'    : len( preLoopSamples ),
+    'repeatFlag'    : repeatFlag,
+    'samples'        : groupSamples( preLoopSamples + postLoopSamples ) if len( inputInstrument['samples'] ) > BRR_BLOCK_SAMPLES else []
   }
 
 
@@ -345,11 +352,11 @@ def convertInstrumentSamples( inputSamples, repeatStart, repeatFlag ):
 
 def convertSample( inputSampleBlock, forceNoFilter ):
   optimumSample = {
-    'blockError' : BRR_BLOCK_SAMPLES * 0xffff	#max possible error
+    'blockError' : BRR_BLOCK_SAMPLES * 0xffff    #max possible error
   }
   globalSampleBuffer = {
-    'last'			: 0,
-    'beforeLast'	: 0
+    'last'            : 0,
+    'beforeLast'    : 0
   }
   for rangeVal in range( BRR_MAX_RANGE_SHIFT ):
       for filterVal in range ( BRR_FILTERS ):
@@ -363,13 +370,13 @@ def convertSample( inputSampleBlock, forceNoFilter ):
   #debugLog(optimumSample, 'optimum sample')
   updateStatistics( optimumSample )
   
-  globalSampleBuffer['last']		= optimumSample['simulatedSamples'].pop()	#selected optimum sample becomes last in buffer
-  globalSampleBuffer['beforeLast']	= optimumSample['simulatedSamples'].pop()
+  globalSampleBuffer['last']        = optimumSample['simulatedSamples'].pop()    #selected optimum sample becomes last in buffer
+  globalSampleBuffer['beforeLast']    = optimumSample['simulatedSamples'].pop()
 
   return {
-    'filter'	: optimumSample['filter'],
-    'range'		: optimumSample['range'],
-    'samples'	: optimumSample['convertedCharSamples'],
+    'filter'    : optimumSample['filter'],
+    'range'        : optimumSample['range'],
+    'samples'    : optimumSample['convertedCharSamples'],
   }
 
 
@@ -385,24 +392,24 @@ def convertSampleBlock( inputSampleBlock, config ):
     convertedCharSample = signedToUnsigned4Bit( convertedSignedSample )
     simulatedBrrSample = simulateBrrSample( convertedSignedSample, config )
     
-    convertedSamples.append( convertedSignedSample )	
+    convertedSamples.append( convertedSignedSample )    
     simulatedSamples.append( simulatedBrrSample )
     convertedCharSamples.append( convertedCharSample )
 
     error = calculateBrrError( signedSample, simulatedBrrSample )
     blockError += error * error
     
-    globalSampleBuffer['beforeLast']	= globalSampleBuffer['last']
-    globalSampleBuffer['last']			= simulatedBrrSample
+    globalSampleBuffer['beforeLast']    = globalSampleBuffer['last']
+    globalSampleBuffer['last']            = simulatedBrrSample
   
   return {
-    'blockError'			: math.sqrt( blockError ),
-    'convertedSamples'		: convertedSamples,
-    'convertedCharSamples'	: convertedCharSamples,
-    'simulatedSamples'		: simulatedSamples,
-    'originalSamples'		: inputSampleBlock,
-    'filter'				: config['filter'],
-    'range'					: config['range'],
+    'blockError'            : math.sqrt( blockError ),
+    'convertedSamples'        : convertedSamples,
+    'convertedCharSamples'    : convertedCharSamples,
+    'simulatedSamples'        : simulatedSamples,
+    'originalSamples'        : inputSampleBlock,
+    'filter'                : config['filter'],
+    'range'                    : config['range'],
   }
 
 
@@ -444,10 +451,10 @@ def calculateBrrError( inputSample, brrSample ):
 
 def getBrrFilterLUT():
   return {
-    0	: applyNoFilter,
-    1	: applyFilter1,
-    2	: applyFilter2,
-    3	: applyFilter3
+    0    : applyNoFilter,
+    1    : applyFilter1,
+    2    : applyFilter2,
+    3    : applyFilter3
   }  
 
 
@@ -510,13 +517,13 @@ def convertChannel( channel ):
   convertedPeriod = convertPeriod( channel['period'] )
   
   return {
-    'instrument'	: channel['instrument'],
-    'period'		: convertedPeriod if convertedPeriod else SPCMOD_INVALID_PERIOD,
-    'effectCommand'	: channel['effectCommand'] if channel['effectCommand'] + channel['effectData'] > 0 else SPCMOD_INVALID_PERIOD,
-    'effectData'	: channel['effectData'] if channel['effectCommand'] + channel['effectData'] > 0 else SPCMOD_INVALID_PERIOD,
-    'valid'			: True
+    'instrument'    : channel['instrument'],
+    'period'        : convertedPeriod if convertedPeriod else SPCMOD_INVALID_PERIOD,
+    'effectCommand'    : channel['effectCommand'] if channel['effectCommand'] + channel['effectData'] > 0 else SPCMOD_INVALID_PERIOD,
+    'effectData'    : channel['effectData'] if channel['effectCommand'] + channel['effectData'] > 0 else SPCMOD_INVALID_PERIOD,
+    'valid'            : True
   } if convertedPeriod or channel['effectData'] > 0 or channel['effectCommand'] > 0 else {
-    'valid'			: False
+    'valid'            : False
   }
   
 
@@ -542,7 +549,7 @@ def getModulePatternCount( sequence ):
 def getModulePlaySequence( mod ):
   sequence = []
   for char in mod[952:1080]:
-    sequence.append( ord( char ) )
+    sequence.append( byte_value( char ) )
   return sequence
 
 
@@ -581,10 +588,10 @@ def getModulePatternRow( patternData, rowId ):
 def getModulePatternRowChannel( channelData, channelId ):
   singleChannelData = channelData[ channelId * MOD_BYTES_PER_CHANNEL : ( channelId + 1 ) * MOD_BYTES_PER_CHANNEL ]
   return {
-    'instrument'	: ( ord( singleChannelData[0] ) & 0xf0 ) | ( ( ord( singleChannelData[2] ) & 0xf0 ) >> 4 ),
-    'period'		: ( ( ord( singleChannelData[0] ) & 0xf ) << 8 ) | ord( singleChannelData[1] ),
-    'effectCommand'	: ord( singleChannelData[2] ) & 0xf,
-    'effectData'	: ord( singleChannelData[3] )
+    'instrument'    : ( byte_value( singleChannelData[0] ) & 0xf0 ) | ( ( byte_value( singleChannelData[2] ) & 0xf0 ) >> 4 ),
+    'period'        : ( ( byte_value( singleChannelData[0] ) & 0xf ) << 8 ) | byte_value( singleChannelData[1] ),
+    'effectCommand'    : byte_value( singleChannelData[2] ) & 0xf,
+    'effectData'    : byte_value( singleChannelData[3] )
   }
 
 
@@ -602,13 +609,13 @@ def getModuleInstruments( mod, currentSampleBufferPosition ):
 def getModuleInstrument( instrumentId, instrumentData, mod, sampleBufferPosition ):
   singleInstrument = instrumentData[ instrumentId * MOD_INSTRUMENT_DATA_LENGTH : ( instrumentId + 1 ) * MOD_INSTRUMENT_DATA_LENGTH ]
   instrument = {
-    'name'			: singleInstrument[0:22],
-    'start'			: sampleBufferPosition,
-    'length'		: checkInstrumentLength( charWordToInt( singleInstrument[22:24] ) ),
-    'finetune'		: ord( singleInstrument[24] ),
-    'volume'		: ord( singleInstrument[25] ),
-    'repeatStart'	: charWordToInt( singleInstrument[26:28] ),
-    'repeatLength'	: checkInstrumentLength( charWordToInt( singleInstrument[28:30] ) )
+    'name'            : singleInstrument[0:22],
+    'start'            : sampleBufferPosition,
+    'length'        : checkInstrumentLength( charWordToInt( singleInstrument[22:24] ) ),
+    'finetune'        : byte_value( singleInstrument[24] ),
+    'volume'        : byte_value( singleInstrument[25] ),
+    'repeatStart'    : charWordToInt( singleInstrument[26:28] ),
+    'repeatLength'    : checkInstrumentLength( charWordToInt( singleInstrument[28:30] ) )
   }
 
   instrument['samples'] = getInstrumentSamples(
@@ -627,13 +634,13 @@ def checkInstrumentLength( length ):
 def getInstrumentSamples( start, length, sampleData ):
   samples = []
   for char in sampleData[ start : start+length ]:
-    samples.append( ( ord( char ) << 8 ) | ord( char ) )	#fetch 16bit samples with dither
-    #samples.append( ord( char ) << 8 )	#fetch 16bit samples
+    samples.append( ( byte_value( char ) << 8 ) | byte_value( char ) )    #fetch 16bit samples with dither
+    #samples.append( byte_value( char ) << 8 )    #fetch 16bit samples
   return samples
 
 
 def charWordToInt( char ):
-  return ( ord( char[1] ) + ( ord( char[0] ) << 8 ) ) * 2
+  return ( byte_value( char[1] ) + ( byte_value( char[0] ) << 8 ) ) * 2
 
 
 def debugLog( data, message = '' ):
@@ -648,8 +655,8 @@ def debugLogExit( data, message = '' ):
 def debugLogRecursive( data, nestStr ):
   nestStr += ' '
   if type( data ) is dict:
-    logging.debug( '%s dict{' % nestStr )	
-    for k, v in data.iteritems():
+    logging.debug( '%s dict{' % nestStr )    
+    for k, v in data.items():
       logging.debug( ' %s %s:' % tuple( [nestStr, k] ) )
       debugLogRecursive( v, nestStr )
     logging.debug( '%s }' % nestStr )
@@ -669,7 +676,7 @@ def debugLogRecursive( data, nestStr ):
 #ugly lookup table, hopefully replaceable by something more elegant
 def getPeriodLUT():
   return {
-    0x0358 : 0,	#oct 1, C
+    0x0358 : 0,    #oct 1, C
     0x0328 : 1,
     0x02FA : 2,
     0x02D0 : 3,
@@ -735,8 +742,8 @@ def getPeriodLUT():
 if __name__ == "__main__":
     main()
 
-#	for arg in sys.argv:
-#		logging.info(' %s' % arg)
+#    for arg in sys.argv:
+#        logging.info(' %s' % arg)
 
 #        try:
 #            Image.open(infile).save(outfile)
@@ -744,5 +751,5 @@ if __name__ == "__main__":
 #            print "Cannot convert", infile
 #file = open(filename+'.'+'%03d' % framecounter, 'wb')
 #len(polys)
-#ord(): get int from char(file byte)
+#byte_value(): get int from char(file byte)
 #chr(): get 

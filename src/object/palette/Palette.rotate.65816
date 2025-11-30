@@ -13,14 +13,14 @@
   METHOD init
   rep #$31
   lda OBJECT.CALL.ARG.1,s
-  sta palette.color.start
+  sta.b palette.color.start
   lda OBJECT.CALL.ARG.2,s
-  sta palette.color.length
-  sta this.counter
+  sta.b palette.color.length
+  sta.b this.counter
   lda OBJECT.CALL.ARG.3,s
-  stz this.delay
+  stz.b this.delay
   lda OBJECT.CALL.ARG.4,s
-  stz this.decay
+  stz.b this.decay
   inc this.inited
   jsr abstract.Palette.init
   rts

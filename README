@@ -1,5 +1,4 @@
 Super Road Blaster v1.2 sourcecode for Super Nintendo
-2012-08-26 Matthias "d4s" Nagler <matt@dforce3000.de>
 
 Please note:
 This release enables you to build the game ROM file, but does not build msu datafile
@@ -15,21 +14,20 @@ the game instead.
 Requirements to build game ROM:
 -os: linux 
 -tools:
-  -WLA DX 9.5a available in the folder wla-dx-9.5-svn
-  -python 2.7.2 (not tested with python 3+! Will probably need adjustments.)
-  -snesbrr by DMV27 available in the tools folder snesbrr-2006-12-13.
+  -WLA DX 10.7a (or newer)
+  -python 3 (tested with 3.x)
+  -snesbrr by DMV27
 
 
 Compilation instructions:
 
--download, compile & install wla dx 9.5a by Ville Hellin
- (http://www.villehelin.com/wla.html).
+-download, compile & install wla dx 10.7a (or newer)
+ (https://github.com/vhelin/wla-dx).
 
 -download, compile & install snesbrr by DMV27
  (http://www.romhacking.net/utilities/407/).
 
--download, compile & install python 2.7.2. Other versions might work, but might
- require modifications to tools.
+-ensure python 3 is installed.
 
 -unpack Super Road Blaster sourcecode
 

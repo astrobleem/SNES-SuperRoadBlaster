@@ -1,0 +1,11 @@
+/**
+* this file has been auto-generated.
+*/
+
+	CHAPTER logo_intro
+
+	EVENT Event.chapter.CLS.PTR $0000 $0164 EventResult.playchapter intro 121 0 
+
+	EVENT Event.confirm.CLS.PTR $0000 $0164 EventResult.playchapter title_screen   
+
+	DIE

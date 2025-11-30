@@ -1,0 +1,33 @@
+/**
+* this file has been auto-generated.
+*/
+
+	CHAPTER level8
+
+	EVENT Event.chapter.CLS.PTR $0000 $025b EventResult.playchapter level8_checkpoint1 92 1 
+
+	EVENT Event.checkpoint.CLS.PTR $0000 $0000 EventResult.none none   
+
+	EVENT Event.direction_left.CLS.PTR $00af $00c1 EventResult.playchapter level8_crash10   
+
+	EVENT Event.soft_crash.CLS.PTR $00b3 $0000 EventResult.none none   
+
+	EVENT Event.direction_right.CLS.PTR $00cb $00e1 EventResult.playchapter level8_crash2   
+
+	EVENT Event.direction_right.CLS.PTR $010b $0121 EventResult.playchapter level8_crash10   
+
+	EVENT Event.direction_left.CLS.PTR $012e $0144 EventResult.playchapter level8_crash2   
+
+	EVENT Event.hide_dash.CLS.PTR $0167 $0191 EventResult.none none   
+
+	EVENT Event.accelerate.CLS.PTR $01a8 $01d5 EventResult.playchapter level8_crash1   
+
+	EVENT Event.direction_left.CLS.PTR $01b4 $01c6 EventResult.playchapter level8_crash1   
+
+	EVENT Event.hide_dash.CLS.PTR $01d6 $01e8 EventResult.none none   
+
+	EVENT Event.terrain_crash.CLS.PTR $01fa $0000 EventResult.none none   
+
+	EVENT Event.hide_dash.CLS.PTR $023c $0259 EventResult.none none   
+
+	DIE

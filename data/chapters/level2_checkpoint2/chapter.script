@@ -1,0 +1,61 @@
+/**
+* this file has been auto-generated.
+*/
+
+	CHAPTER level2_checkpoint2
+
+	EVENT Event.chapter.CLS.PTR $0000 $047f EventResult.playchapter level_complete2 24 1 
+
+	EVENT Event.checkpoint.CLS.PTR $0000 $0000 EventResult.none none   
+
+	EVENT Event.brake.CLS.PTR $0060 $007a EventResult.playchapter level2_crash10   
+
+	EVENT Event.accelerate.CLS.PTR $007d $00b9 EventResult.playchapter level2_crash1   
+
+	EVENT Event.landing_crash.CLS.PTR $00d3 $0000 EventResult.none none   
+
+	EVENT Event.direction_left.CLS.PTR $00e4 $00fb EventResult.playchapter level2_crash6   
+
+	EVENT Event.direction_right.CLS.PTR $0129 $0140 EventResult.playchapter level2_crash7   
+
+	EVENT Event.direction_left.CLS.PTR $014e $016a EventResult.playchapter level2_crash6   
+
+	EVENT Event.direction_right.CLS.PTR $0190 $01a8 EventResult.playchapter level2_crash8   
+
+	EVENT Event.accelerate.CLS.PTR $01b2 $01e5 EventResult.playchapter level2_crash11   
+
+	EVENT Event.hide_dash.CLS.PTR $01e4 $01fa EventResult.none none   
+
+	EVENT Event.accelerate.CLS.PTR $020b $0228 EventResult.playchapter level2_crash11   
+
+	EVENT Event.target.CLS.PTR $020b $0228 EventResult.playchapter level2_crash11   
+
+	EVENT Event.macro_vibrate1.CLS.PTR $021f $0000 EventResult.none none   
+
+	EVENT Event.hide_dash.CLS.PTR $022a $0242 EventResult.none none   
+
+	EVENT Event.shake.CLS.PTR $0235 $03b5 EventResult.none none   
+
+	EVENT Event.landing_crash.CLS.PTR $0243 $0000 EventResult.none none   
+
+	EVENT Event.direction_left.CLS.PTR $0284 $0294 EventResult.playchapter level2_crash6   
+
+	EVENT Event.direction_right.CLS.PTR $02ae $02c8 EventResult.playchapter level2_crash6   
+
+	EVENT Event.accelerate.CLS.PTR $02d6 $02f6 EventResult.playchapter level2_crash9   
+
+	EVENT Event.terrain_crash.CLS.PTR $02f6 $0000 EventResult.none none   
+
+	EVENT Event.hide_dash.CLS.PTR $02f7 $0333 EventResult.none none   
+
+	EVENT Event.direction_left.CLS.PTR $0356 $036d EventResult.playchapter level2_crash6   
+
+	EVENT Event.wall_crash.CLS.PTR $0363 $0000 EventResult.none none   
+
+	EVENT Event.brake.CLS.PTR $0395 $03ac EventResult.playchapter level2_crash7   
+
+	EVENT Event.hide_dash.CLS.PTR $03ab $04d0 EventResult.none none   
+
+	EVENT Event.slide_crash.CLS.PTR $03d2 $0000 EventResult.none none   
+
+	DIE

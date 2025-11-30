@@ -1,0 +1,9 @@
+/**
+* this file has been auto-generated.
+*/
+
+	CHAPTER level2_crash6
+
+	EVENT Event.chapter.CLS.PTR $0000 $003f EventResult.lastcheckpoint none 32 0 
+
+	DIE

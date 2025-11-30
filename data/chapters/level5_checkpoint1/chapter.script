@@ -1,0 +1,53 @@
+/**
+* this file has been auto-generated.
+*/
+
+	CHAPTER level5_checkpoint1
+
+	EVENT Event.chapter.CLS.PTR $0000 $0378 EventResult.playchapter level5_checkpoint2 58 1 
+
+	EVENT Event.checkpoint.CLS.PTR $0000 $0000 EventResult.none none   
+
+	EVENT Event.direction_right.CLS.PTR $0039 $004d EventResult.playchapter level5_crash3   
+
+	EVENT Event.direction_left.CLS.PTR $0062 $0079 EventResult.playchapter level5_crash3   
+
+	EVENT Event.direction_left.CLS.PTR $00b1 $00c9 EventResult.playchapter level5_crash4   
+
+	EVENT Event.hide_dash.CLS.PTR $00cf $00ff EventResult.none none   
+
+	EVENT Event.direction_right.CLS.PTR $0119 $012b EventResult.playchapter level5_crash8   
+
+	EVENT Event.direction_left.CLS.PTR $012f $0141 EventResult.playchapter level5_crash5   
+
+	EVENT Event.direction_right.CLS.PTR $0171 $0181 EventResult.playchapter level5_crash8   
+
+	EVENT Event.explode_crash.CLS.PTR $0184 $0000 EventResult.none none   
+
+	EVENT Event.direction_right.CLS.PTR $01a9 $01be EventResult.playchapter level5_crash8   
+
+	EVENT Event.soft_crash.CLS.PTR $01f2 $0000 EventResult.none none   
+
+	EVENT Event.direction_right.CLS.PTR $020a $0221 EventResult.playchapter level5_crash8   
+
+	EVENT Event.accelerate.CLS.PTR $022a $0245 EventResult.playchapter level5_crash8   
+
+	EVENT Event.soft_crash.CLS.PTR $022b $0000 EventResult.none none   
+
+	EVENT Event.macro_vibrate1.CLS.PTR $0260 $0000 EventResult.none none   
+
+	EVENT Event.direction_right.CLS.PTR $0270 $0285 EventResult.playchapter level5_crash8   
+
+	EVENT Event.accelerate.CLS.PTR $02ae $02eb EventResult.playchapter level5_crash6   
+
+	EVENT Event.terrain_crash.CLS.PTR $02c2 $0000 EventResult.none none   
+
+	EVENT Event.hide_dash.CLS.PTR $02ef $032d EventResult.none none   
+
+	EVENT Event.macro_vibrate1.CLS.PTR $0327 $0000 EventResult.none none   
+
+	EVENT Event.direction_right.CLS.PTR $0339 $0350 EventResult.playchapter level5_crash8   
+
+	EVENT Event.direction_right.CLS.PTR $0359 $036b EventResult.playchapter level5_crash8   
+
+	DIE

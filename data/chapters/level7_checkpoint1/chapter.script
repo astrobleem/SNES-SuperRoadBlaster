@@ -1,0 +1,29 @@
+/**
+* this file has been auto-generated.
+*/
+
+	CHAPTER level7_checkpoint1
+
+	EVENT Event.chapter.CLS.PTR $0000 $0161 EventResult.playchapter level7_checkpoint2 82 1 
+
+	EVENT Event.checkpoint.CLS.PTR $0000 $0000 EventResult.none none   
+
+	EVENT Event.direction_right.CLS.PTR $0034 $0045 EventResult.playchapter level7_crash5   
+
+	EVENT Event.direction_left.CLS.PTR $0056 $005e EventResult.playchapter level7_crash5   
+
+	EVENT Event.accelerate.CLS.PTR $0099 $00af EventResult.playchapter level7_crash1   
+
+	EVENT Event.target.CLS.PTR $0099 $00af EventResult.playchapter level7_crash1   
+
+	EVENT Event.macro_vibrate1.CLS.PTR $00ad $0000 EventResult.none none   
+
+	EVENT Event.direction_right.CLS.PTR $00d1 $00e3 EventResult.playchapter level7_crash1   
+
+	EVENT Event.explode_crash.CLS.PTR $00dd $0000 EventResult.none none   
+
+	EVENT Event.accelerate.CLS.PTR $0145 $0161 EventResult.playchapter level7_crash6   
+
+	EVENT Event.opponent_crash.CLS.PTR $014f $0000 EventResult.none none   
+
+	DIE

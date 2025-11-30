@@ -1,0 +1,29 @@
+/**
+* this file has been auto-generated.
+*/
+
+	CHAPTER level9_checkpoint2
+
+	EVENT Event.chapter.CLS.PTR $0000 $0141 EventResult.playchapter level9_checkpoint3 109 1 
+
+	EVENT Event.checkpoint.CLS.PTR $0000 $0000 EventResult.none none   
+
+	EVENT Event.direction_left.CLS.PTR $0033 $004b EventResult.playchapter level9_crash4   
+
+	EVENT Event.direction_right.CLS.PTR $0056 $006d EventResult.playchapter level9_crash2   
+
+	EVENT Event.direction_left.CLS.PTR $007b $0094 EventResult.playchapter level9_crash4   
+
+	EVENT Event.direction_right.CLS.PTR $0096 $00aa EventResult.playchapter level9_crash2   
+
+	EVENT Event.direction_left.CLS.PTR $00b3 $00c6 EventResult.playchapter level9_crash4   
+
+	EVENT Event.direction_right.CLS.PTR $00ca $00e1 EventResult.playchapter level9_crash2   
+
+	EVENT Event.direction_right.CLS.PTR $00ed $0103 EventResult.playchapter level9_crash3   
+
+	EVENT Event.direction_left.CLS.PTR $010b $0123 EventResult.playchapter level9_crash2   
+
+	EVENT Event.direction_right.CLS.PTR $0127 $013d EventResult.playchapter level9_crash3   
+
+	DIE

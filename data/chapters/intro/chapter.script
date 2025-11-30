@@ -1,0 +1,11 @@
+/**
+* this file has been auto-generated.
+*/
+
+	CHAPTER intro
+
+	EVENT Event.chapter.CLS.PTR $0000 $0b28 EventResult.playchapter hall_of_fame 2 0 
+
+	EVENT Event.confirm.CLS.PTR $0000 $0b28 EventResult.playchapter title_screen   
+
+	DIE

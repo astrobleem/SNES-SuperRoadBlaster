@@ -1,0 +1,49 @@
+/**
+* this file has been auto-generated.
+*/
+
+	CHAPTER level8_checkpoint2
+
+	EVENT Event.chapter.CLS.PTR $0000 $026a EventResult.playchapter level8_checkpoint3 94 1 
+
+	EVENT Event.checkpoint.CLS.PTR $0000 $0000 EventResult.none none   
+
+	EVENT Event.direction_left.CLS.PTR $0026 $0039 EventResult.playchapter level8_crash7   
+
+	EVENT Event.soft_crash.CLS.PTR $0039 $0000 EventResult.none none   
+
+	EVENT Event.direction_right.CLS.PTR $0043 $0054 EventResult.playchapter level8_crash7   
+
+	EVENT Event.soft_crash.CLS.PTR $004e $0000 EventResult.none none   
+
+	EVENT Event.soft_crash.CLS.PTR $0072 $0000 EventResult.none none   
+
+	EVENT Event.hide_dash.CLS.PTR $0076 $00bb EventResult.none none   
+
+	EVENT Event.accelerate.CLS.PTR $00d6 $0107 EventResult.playchapter level8_crash7   
+
+	EVENT Event.direction_right.CLS.PTR $00f5 $010a EventResult.playchapter level8_crash4   
+
+	EVENT Event.direction_left.CLS.PTR $0116 $012b EventResult.playchapter level8_crash6   
+
+	EVENT Event.direction_right.CLS.PTR $0139 $0148 EventResult.playchapter level8_crash4   
+
+	EVENT Event.macro_vibrate1.CLS.PTR $0155 $0000 EventResult.none none   
+
+	EVENT Event.hide_dash.CLS.PTR $015f $018e EventResult.none none   
+
+	EVENT Event.landing_crash.CLS.PTR $01aa $0000 EventResult.none none   
+
+	EVENT Event.direction_right.CLS.PTR $01e0 $01f1 EventResult.playchapter level8_crash10   
+
+	EVENT Event.macro_vibrate1.CLS.PTR $01fb $0000 EventResult.none none   
+
+	EVENT Event.brake.CLS.PTR $0222 $0239 EventResult.playchapter level8_crash10   
+
+	EVENT Event.terrain_crash.CLS.PTR $0225 $0000 EventResult.none none   
+
+	EVENT Event.hide_dash.CLS.PTR $023b $0261 EventResult.none none   
+
+	EVENT Event.landing_crash.CLS.PTR $024c $0000 EventResult.none none   
+
+	DIE

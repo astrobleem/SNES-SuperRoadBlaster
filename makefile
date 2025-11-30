@@ -6,19 +6,19 @@ linkdir := $(builddir)/lnk
 romext := sfc
 romfile := $(builddir)/SuperRoadBlaster.$(romext)
 
-linker := wlalink
+linker := ./wla-dx-9.5-svn/wlalink/wlalink
 linkflags := -dsr
 linkobjectfile := $(linkdir)/linkobjs.lst
 
-assembler := wla-65816
+assembler := ./wla-dx-9.5-svn/wla-65816
 assemblerflags := -o
 
-spcasm = wla-spc700
+spcasm = ./wla-dx-9.5-svn/wla-spc700
 spcflags = -o
-spclinkflags := -sb
+spclinkflags := -b
 spclinkobjectfile := $(linkdir)/spclinkobjs.lst
 
-gfxconverter :=./tools/gracon.py
+gfxconverter :=python3 ./tools/gracon.py
 verify := -verify on
 gfx_font_flags := $(verify) -optimize off -palettes 1 -bpp 2 -mode bg
 gfx_font4bpp_flags := $(verify) -optimize off -palettes 1 -bpp 4 -mode bg
@@ -28,16 +28,17 @@ gfx_directcolor_flags := $(verify) -optimize on -directcolor on -tilethreshold 1
 gfx_video_flags := $(verify) -optimize on -tilethreshold 13 -maxtiles 512 -palettes 8 -bpp 4 -mode bg
 gfx_sprite_flags := $(verify) -optimize on -tilethreshold 10 -palettes 2 -bpp 4 -mode sprite
 
-msu1converter := ./tools/msu1blockwriter.py
+msu1converter := python3 ./tools/msu1blockwriter.py
 msu1flags := -title 'SUPER ROAD BLASTER'
 
-msu1audioconverter := ./tools/msu1pcmwriter.py
-songconverter := ./tools/mod2snes.py
+msu1audioconverter := python3 ./tools/msu1pcmwriter.py
+songconverter := python3 ./tools/mod2snes.py
 
-xmlchapterconverter := ./tools/xmlsceneparser.py
+xmlchapterconverter := python3 ./tools/xmlsceneparser.py
 
-animation_converter := ./tools/animationWriter.py
+animation_converter := python3 ./tools/animationWriter.py
 
+# Real snesbrr
 sound_converter := snesbrr
 
 RD := $(RM) -r

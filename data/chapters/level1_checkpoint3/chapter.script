@@ -1,0 +1,63 @@
+/**
+* this file has been auto-generated.
+*/
+
+	CHAPTER level1_checkpoint3
+
+	EVENT Event.chapter.CLS.PTR $0000 $0350 EventResult.playchapter level1_checkpoint4 6 1 
+
+	EVENT Event.checkpoint.CLS.PTR $0000 $0000 EventResult.none none   
+
+	EVENT Event.macro_vibrate1.CLS.PTR $0035 $0000 EventResult.none none   
+
+	EVENT Event.hide_dash.CLS.PTR $0043 $0061 EventResult.none none   
+
+	EVENT Event.accelerate.CLS.PTR $0073 $008b EventResult.playchapter level1_crash1   
+
+	EVENT Event.target.CLS.PTR $0073 $008b EventResult.playchapter level1_crash1   
+
+	EVENT Event.macro_vibrate1.CLS.PTR $0089 $0000 EventResult.none none   
+
+	EVENT Event.accelerate.CLS.PTR $0095 $00a3 EventResult.playchapter level1_crash1   
+
+	EVENT Event.target.CLS.PTR $0095 $00a3 EventResult.playchapter level1_crash1   
+
+	EVENT Event.macro_vibrate1.CLS.PTR $00a0 $0000 EventResult.none none   
+
+	EVENT Event.accelerate.CLS.PTR $00a6 $00b4 EventResult.playchapter level1_crash1   
+
+	EVENT Event.target.CLS.PTR $00a6 $00b4 EventResult.playchapter level1_crash1   
+
+	EVENT Event.macro_vibrate1.CLS.PTR $00b3 $0000 EventResult.none none   
+
+	EVENT Event.direction_right.CLS.PTR $0115 $012b EventResult.playchapter level1_crash1   
+
+	EVENT Event.hide_dash.CLS.PTR $0130 $0153 EventResult.none none   
+
+	EVENT Event.macro_rockfast.CLS.PTR $0133 $0000 EventResult.none none   
+
+	EVENT Event.terrain_crash.CLS.PTR $0157 $0000 EventResult.none none   
+
+	EVENT Event.terrain_crash.CLS.PTR $0157 $0000 EventResult.none none   
+
+	EVENT Event.direction_left.CLS.PTR $0164 $017a EventResult.playchapter level1_crash12   
+
+	EVENT Event.terrain_crash.CLS.PTR $0179 $0000 EventResult.none none   
+
+	EVENT Event.direction_right.CLS.PTR $01ac $01fc EventResult.playchapter level1_crash3   
+
+	EVENT Event.direction_right.CLS.PTR $0240 $0258 EventResult.playchapter level1_crash1   
+
+	EVENT Event.direction_right.CLS.PTR $0270 $0288 EventResult.playchapter level1_crash1   
+
+	EVENT Event.direction_left.CLS.PTR $02b3 $02ca EventResult.playchapter level1_crash1   
+
+	EVENT Event.soft_crash.CLS.PTR $0304 $0000 EventResult.none none   
+
+	EVENT Event.direction_left.CLS.PTR $030d $0323 EventResult.playchapter level1_crash1   
+
+	EVENT Event.brake.CLS.PTR $0330 $034e EventResult.playchapter level1_crash5   
+
+	EVENT Event.direction_left.CLS.PTR $033e $034e EventResult.playchapter level1_crash5   
+
+	DIE

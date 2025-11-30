@@ -40,6 +40,7 @@ SpriteAnimationLUT:
 .ends	
 
   ;SPRITE_ANIMATION zero
+  ;SPRITE_ANIMATION zero
   SPRITE_ANIMATION right_arrow
   SPRITE_ANIMATION left_arrow
   SPRITE_ANIMATION turbo

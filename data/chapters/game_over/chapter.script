@@ -1,0 +1,9 @@
+/**
+* this file has been auto-generated.
+*/
+
+	CHAPTER game_over
+
+	EVENT Event.chapter.CLS.PTR $0000 $004e EventResult.playchapter score_entry 0 0 
+
+	DIE

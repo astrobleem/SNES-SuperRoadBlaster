@@ -1,0 +1,9 @@
+/**
+* this file has been auto-generated.
+*/
+
+	CHAPTER highscores
+
+	EVENT Event.chapter.CLS.PTR $0000 $02de EventResult.restartchapter none 1 0 
+
+	DIE

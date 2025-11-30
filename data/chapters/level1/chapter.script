@@ -1,0 +1,13 @@
+/**
+* this file has been auto-generated.
+*/
+
+	CHAPTER level1
+
+	EVENT Event.chapter.CLS.PTR $0000 $00a7 EventResult.playchapter level1_checkpoint1 3 1 
+
+	EVENT Event.checkpoint.CLS.PTR $0000 $0000 EventResult.none none   
+
+	EVENT Event.hide_dash.CLS.PTR $0000 $00a7 EventResult.none none   
+
+	DIE

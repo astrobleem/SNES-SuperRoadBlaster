@@ -1,0 +1,31 @@
+/**
+* this file has been auto-generated.
+*/
+
+	CHAPTER level6_checkpoint3
+
+	EVENT Event.chapter.CLS.PTR $0000 $0196 EventResult.playchapter level6_checkpoint4 71 1 
+
+	EVENT Event.checkpoint.CLS.PTR $0000 $0000 EventResult.none none   
+
+	EVENT Event.accelerate.CLS.PTR $0023 $0043 EventResult.playchapter level6_crash7   
+
+	EVENT Event.terrain_crash.CLS.PTR $0035 $0000 EventResult.none none   
+
+	EVENT Event.landing_crash.CLS.PTR $0086 $0000 EventResult.none none   
+
+	EVENT Event.direction_right.CLS.PTR $008e $009c EventResult.playchapter level6_crash2   
+
+	EVENT Event.direction_left.CLS.PTR $00a1 $00ae EventResult.playchapter level6_crash1   
+
+	EVENT Event.direction_right.CLS.PTR $00c9 $00d7 EventResult.playchapter level6_crash8   
+
+	EVENT Event.direction_left.CLS.PTR $00e8 $00f4 EventResult.playchapter level6_crash2   
+
+	EVENT Event.macro_vibrate1.CLS.PTR $0145 $0000 EventResult.none none   
+
+	EVENT Event.direction_right.CLS.PTR $014f $0164 EventResult.playchapter level6_crash4   
+
+	EVENT Event.direction_left.CLS.PTR $0187 $0194 EventResult.playchapter level6_crash4   
+
+	DIE

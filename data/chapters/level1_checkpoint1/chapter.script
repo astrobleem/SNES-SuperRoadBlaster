@@ -1,0 +1,19 @@
+/**
+* this file has been auto-generated.
+*/
+
+	CHAPTER level1_checkpoint1
+
+	EVENT Event.chapter.CLS.PTR $0000 $0119 EventResult.playchapter level1_checkpoint2 4 1 
+
+	EVENT Event.checkpoint.CLS.PTR $0000 $0000 EventResult.none none   
+
+	EVENT Event.direction_right.CLS.PTR $0072 $0086 EventResult.playchapter level1_crash1   
+
+	EVENT Event.direction_left.CLS.PTR $008f $00a3 EventResult.playchapter level1_crash1   
+
+	EVENT Event.direction_left.CLS.PTR $00c4 $00db EventResult.playchapter level1_crash1   
+
+	EVENT Event.direction_right.CLS.PTR $00ea $0101 EventResult.playchapter level1_crash2   
+
+	DIE

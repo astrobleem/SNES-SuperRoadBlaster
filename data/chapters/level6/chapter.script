@@ -1,0 +1,45 @@
+/**
+* this file has been auto-generated.
+*/
+
+	CHAPTER level6
+
+	EVENT Event.chapter.CLS.PTR $0000 $0283 EventResult.playchapter level6_checkpoint1 68 1 
+
+	EVENT Event.checkpoint.CLS.PTR $0000 $0000 EventResult.none none   
+
+	EVENT Event.opponent_crash.CLS.PTR $005a $0000 EventResult.none none   
+
+	EVENT Event.direction_left.CLS.PTR $0064 $007c EventResult.playchapter level6_crash2   
+
+	EVENT Event.direction_left.CLS.PTR $0098 $00ac EventResult.playchapter level6_crash2   
+
+	EVENT Event.soft_crash.CLS.PTR $00ac $0000 EventResult.none none   
+
+	EVENT Event.direction_right.CLS.PTR $00b1 $00c6 EventResult.playchapter level6_crash4   
+
+	EVENT Event.accelerate.CLS.PTR $00dc $0112 EventResult.playchapter level6_crash1   
+
+	EVENT Event.target.CLS.PTR $00f9 $0112 EventResult.playchapter level6_crash1   
+
+	EVENT Event.macro_vibrate1.CLS.PTR $0111 $0000 EventResult.none none   
+
+	EVENT Event.direction_right.CLS.PTR $0150 $0162 EventResult.playchapter level6_crash2   
+
+	EVENT Event.direction_left.CLS.PTR $016a $0181 EventResult.playchapter level6_crash2   
+
+	EVENT Event.direction_right.CLS.PTR $018c $01a4 EventResult.playchapter level6_crash4   
+
+	EVENT Event.direction_right.CLS.PTR $01bf $01d6 EventResult.playchapter level6_crash4   
+
+	EVENT Event.macro_vibrate1.CLS.PTR $01c1 $0000 EventResult.none none   
+
+	EVENT Event.direction_right.CLS.PTR $0234 $024a EventResult.playchapter level6_crash3   
+
+	EVENT Event.accelerate.CLS.PTR $0234 $024a EventResult.playchapter level6_crash3   
+
+	EVENT Event.hide_dash.CLS.PTR $024e $025d EventResult.none none   
+
+	EVENT Event.direction_left.CLS.PTR $0268 $0280 EventResult.playchapter level6_crash4   
+
+	DIE
